@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 <!DOCTYPE>
 <html>
 	<head>
@@ -54,13 +46,12 @@ if(isset($_POST["Submit"]))
 		$Time =$_POST["Time"];
 		$Present=$_POST["Present"];
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 	$Query="INSERT INTO attendance
 			VALUE('$Roll_Number','$Room_Id','$Date','$Time','$Present')" ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>Record saved </h2>";

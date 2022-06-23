@@ -45,11 +45,10 @@ $Equipment_Id= $_POST["Equipment_Id"];
 $Roll_Number=$_POST["Roll_Number"];
 $Equipment_Details=$_POST["Equipment_Details"];
 $Hostel_Id=$_POST["Hostel_Id"];
-$Connection=mysql_connect('localhost','root','');
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $Query="INSERT INTO  sports VALUES('$Issue_Date',NULL,'$Equipment_Id','$Roll_Number',NULL,'$Equipment_Details','$Hostel_Id')";
                               
-            $Execute=mysql_query($Query); 
+            $Execute=mysqli_query($Connection,$Query); 
 if($Execute){
 	echo "<h2>Record saved</h2>";
 }

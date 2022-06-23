@@ -43,13 +43,12 @@ $Fees= $_POST["Fees"];
 $Hostel_Id= $_POST["Hostel_Id"];
 $Date=$_POST["Date"];
 
-$Connection=mysql_connect('localhost','root','');
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 
 $Query="INSERT INTO mess VALUES('$Roll_Number','$Fees','$Hostel_Id','$Date')";
                               
-            $Execute=mysql_query($Query);
+            $Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>Record saved </h2>";

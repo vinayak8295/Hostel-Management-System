@@ -124,16 +124,15 @@
 	</tr>
 <?php 
 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM student
             ";
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Roll_No=$DataRows['rollno'];
 	$Student_Name=$DataRows['student_name'];
 	$Father_Name=$DataRows['father_name'];

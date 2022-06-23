@@ -1,6 +1,5 @@
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 $Delete_rollno=$_GET['Delete'];
 $Delete_Query="UPDATE mess
@@ -8,7 +7,7 @@ $Delete_Query="UPDATE mess
 				WHERE rollno='$Delete_rollno' "
 ;
 
-$Execute=mysql_query($Delete_Query);
+$Execute=mysqli_query($Connection,$Delete_Query);
 if($Execute){
 
 

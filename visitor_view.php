@@ -27,15 +27,14 @@
  
 	</tr>
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM Visitor " ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Aadhar_Number=$DataRows['aadhar_number'];
 	$Rollno=$DataRows['rollno'];
 	$Visitor_Name=$DataRows['visitor_name'];

@@ -76,15 +76,14 @@ session_start();
  
 <?php 
 $variable = $_SESSION["Name"] ;
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * FROM message
              Where rollno = '$variable' AND student_view = 1 " ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Roll_Number=$DataRows['rollno'];
 	$Date=$DataRows['date1'];
 	$Message=$DataRows['message'];

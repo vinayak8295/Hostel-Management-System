@@ -44,19 +44,18 @@ if(isset($_POST["Submit"])){
 $Type= $_POST["Type"];
 $Start_Date= $_POST["Start_Date"];
 $Number_Of_Days= $_POST["Number_Of_Days"];
-$Connection=mysql_connect('localhost','root','');
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 $Query1 = "SELECT hostel_id
            FROM student
            WHERE rollno = '$variable'
               ";
-$result = mysql_query($Query1);  
-$row = mysql_fetch_row($result); 
+$result = mysqli_query($Connection,$Query1);  
+$row = mysqli_fetch_row($result); 
 $Hostel_Id = $row[0];
 
 $Query="INSERT INTO  leaveform(rollno,type,start_date,no_of_days,hostel_id) VALUES('$Roll_Number','$Type','$Start_Date','$Number_Of_Days', '$Hostel_Id')";
-            $Execute=mysql_query($Query); 
+            $Execute=mysqli_query($Connection,$Query); 
 if($Execute){
 	echo "<h2>Record saved</h2>";
 }

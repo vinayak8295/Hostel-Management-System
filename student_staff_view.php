@@ -80,8 +80,7 @@ session_start();
 
 <?php 
 $variable = $_SESSION["Name"] ; 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
            FROM staff
          WHERE hostel_id = (
@@ -90,11 +89,11 @@ $ViewQuery="SELECT *
 	           WHERE rollno = '$variable'
 ) ";
 
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Emp_id=$DataRows['emp_id'];
 	$Emp_name=$DataRows['emp_name'];
 	$Address=$DataRows['address'];

@@ -1,6 +1,5 @@
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 $Update_Status=$_GET['update'];
 $Query="UPDATE leaveform
@@ -8,7 +7,7 @@ $Query="UPDATE leaveform
                 WHERE rollno ='$Update_Status' "
 ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 if($Execute){
 	echo '<script>window.open("leave_view.php?updated=Record updated successfully","_self")</script> ';
 }

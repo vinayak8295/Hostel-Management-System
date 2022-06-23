@@ -32,16 +32,15 @@ if(isset($Roll_Number)&&!empty($Roll_Number))
 
 <?php 
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM mess
             Where rollno = '$Roll_Number'" ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
   $Roll_Number=$DataRows['rollno'];
   $Fees=$DataRows['fees'];
   $Hostel_id=$DataRows['hostel_id'];
@@ -95,17 +94,16 @@ if(isset($Hostel_Id)&&!empty($Hostel_Id))
 
     <?php 
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM mess
             Where hostel_id = '$Hostel_Id'
             ORDER BY fees DESC" ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
   $Roll_Number=$DataRows['rollno'];
   $Fees=$DataRows['fees'];
   $Hostel_id=$DataRows['hostel_id'];

@@ -55,13 +55,12 @@ if(isset($_POST["Submit"]))
 		$Hostel_Name=$_POST["Hostel_Name"];
 		$Rooms_Vacant=$_POST["Rooms_Vacant"];
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 	$Query="INSERT INTO hostel
 			VALUE('$Hostel_id','$No_of_rooms','$No_of_students','$Location','$Hostel_Name','$Rooms_Vacant')" ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>Record saved </h2>";

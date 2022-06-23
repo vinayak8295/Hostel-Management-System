@@ -44,23 +44,22 @@ if(isset($_POST["Submit"]))
 		$Date =$_POST["Date"];
 		$Message =$_POST["Message"];
 		$From = $_POST["From"];
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 if ($Roll_Number=='ALL') {
 
 $ViewQuery="SELECT rollno 
             FROM student
             ";
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Roll_No=$DataRows['rollno'];
 	$variable = $Roll_No ;
 $Query1="INSERT INTO message(rollno,date1,message,from1) 
 VALUES('$Roll_No','$Date','$Message','$From')" ;
-$Execute1=mysql_query($Query1);
+$Execute1=mysqli_query($Connection,$Query1);
 
 	}
 
@@ -68,7 +67,7 @@ $Execute1=mysql_query($Query1);
 {
 $Query="INSERT INTO message(rollno,date1,message,from1) 
 VALUES('$Roll_Number','$Date','$Message','$From')" ;
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 }
 
 

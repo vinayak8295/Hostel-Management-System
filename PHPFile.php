@@ -10,15 +10,13 @@ $Username=$_POST["Username"];
 $Password=$_POST["Password"];
 $Submit=$_POST["Submit"];
 
+$Connection=mysqli_connect('localhost','root','','dbms');
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
-
-$result = mysql_query("SELECT *
+$result = mysqli_query($Connection,"SELECT *
                        FROM student_user
                        WHERE username = '$Username' AND password = '$Password' ")
-                  OR die("Failed to query database".mysql_error());
-$row = mysql_fetch_array($result);
+                  OR die("Failed to query database".mysqli_error());
+$row = mysqli_fetch_array($result);
 if ($row['username'] ==$Username && $row['password']==$Password) {
          session_start();
          $_SESSION["Name"] = $Username ;

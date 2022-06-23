@@ -108,15 +108,14 @@
  
 	</tr>
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM room " ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Room_Id=$DataRows['room_id'];
 	$Capacity=$DataRows['capacity'];
 	$Name_Of_Student=$DataRows['name_of_student'];

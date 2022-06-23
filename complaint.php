@@ -40,15 +40,13 @@ if(isset($_POST["Submit"]))
 {
 		$Date=$_POST["Date"];
 		$Particular = $_POST["Particular"];
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
-
+$Connection=mysqli_connect('localhost','root','','dbms');
 $Query1 = "SELECT room_id
            FROM student
            WHERE rollno = '$variable'
               ";
-$result = mysql_query($Query1);  
-$row = mysql_fetch_row($result); 
+$result = mysqli_query($Connection,$Query1);  
+$row = mysqli_fetch_row($result); 
 $Room_Id = $row[0];
 
 
@@ -56,7 +54,7 @@ $Room_Id = $row[0];
 $Query="INSERT INTO complaint(room_id, rollno, date1, particular)
 VALUES('$Room_Id','$Roll_Number','$Date','$Particular')" ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>record saved</h2>"; 

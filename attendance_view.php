@@ -13,14 +13,13 @@
 </form>
 
 <?php 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 if(isset($_GET['SearchButton'])){
 	$Search=$_GET["Search"];
 	$SearchQuery="SELECT * FROM attendance WHERE rollno='$Search'OR date ='$Search' ";
-	$Execute = mysql_query($SearchQuery);
-	while($DataRows=mysql_fetch_array($Execute)){
+	$Execute = mysqli_query($Connection,$SearchQuery);
+	while($DataRows=mysqli_fetch_array($Execute)){
 	$Rollno=$DataRows['rollno'];
 	$Room_id=$DataRows['room_id'];
 	$Date=$DataRows['date'];
@@ -69,14 +68,13 @@ if(isset($_GET['SearchButton'])){
  
 	</tr>
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+ $Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * FROM attendance" ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Rollno=$DataRows['rollno'];
 	$Room_id=$DataRows['room_id'];
 	$Date=$DataRows['date'];

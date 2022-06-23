@@ -114,16 +114,15 @@
  
 	</tr>
 <?php 
- $Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $ViewQuery="SELECT * 
             FROM complaint 
             Where Status = 'pending' " ;
-$Execute=mysql_query($ViewQuery);
+$Execute=mysqli_query($Connection,$ViewQuery);
 
 
 
-while($DataRows=mysql_fetch_array($Execute)){
+while($DataRows=mysqli_fetch_array($Execute)){
 	$Room_Id=$DataRows['room_id'];
 	$Roll_Number=$DataRows['rollno'];
 	$Date=$DataRows['date1'];

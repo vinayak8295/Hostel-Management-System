@@ -1,12 +1,11 @@
 <?php
-$Connection=mysql_connect('localhost','root','');
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 $Update_Record= $_GET['Update'];
 $ShowQuery="SELECT * FROM sports
 				WHERE id='Update_Record' ";
-$Update=mysql_query($ShowQuery);
-while($DataRows=mysql_fetch_array($Update)){
+$Update=mysqli_query($Connection,$ShowQuery);
+while($DataRows=mysqli_fetch_array($Update)){
 	$Update_id=$DataRows['equipment_id'];
 	$Issue_Date=$DataRows['issue_date'];
 	$Return_Date=$DataRows['return_date'];
@@ -73,8 +72,7 @@ while($DataRows=mysql_fetch_array($Update)){
 </html>
 
 <?php 
-$Connection=mysql_connect('localhost','root','');
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 
 if(isset($_POST["Submit"])){
 	$Update_id=$_GET['Update_id'];
@@ -89,7 +87,7 @@ $Hostel_Id=$_POST["Hostel_Id"];
 $UpdateQuery="UPDATE sports SET issue_date='$Issue_Date' ,return_date='$Return_Date', equipment_id='$Equipment_Id', rollno='$Roll_Number', fine='$Fine', equipment_details='$Equipment_Details'
 		WHERE  equipment_id='$Update_id'   ";
 
-$Execute=mysql_query($UpdateQuery);
+$Execute=mysqli_query($Connection,$UpdateQuery);
 	if($Execute){
 		function redirect_to($NewLocation){
 			header("Location:".$NewLocation);

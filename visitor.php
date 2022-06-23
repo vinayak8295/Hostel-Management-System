@@ -57,12 +57,10 @@ $Time_In= $_POST["Time_In"];
 $Time_Out= $_POST["Time_Out"];
 $Date= $_POST["Date"];
 $Relation= $_POST["Relation"];
-$Connection=mysql_connect('localhost','root','');
-
-$Selected=mysql_select_db('dbms',$Connection);
+$Connection=mysqli_connect('localhost','root','','dbms');
 $Query="INSERT INTO  visitor VALUES('$Aadhar_Number','$Roll_Number','$Visitor_Name','$Time_In',
                               '$Time_Out','$Date','$Relation')";
-            $Execute=mysql_query($Query); 
+            $Execute=mysqli_query($Connection,$Query); 
 if($Execute){
 	echo "<h2>Record saved</h2>";
 }

@@ -77,13 +77,12 @@ if(isset($_POST["Submit"]))
 		$Designation=$_POST["Designation"];
 		
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+		$Connection=mysqli_connect('localhost','root','','dbms');
 
 	$Query="INSERT INTO staff
 	VALUES('$Emp_id','$Emp_name','$Emp_salary','$City','$State','$Pincode', '$Address','$Mobile_number','$Hostel_id','$Designation')" ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>record saved</h2>"; 

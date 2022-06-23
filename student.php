@@ -106,12 +106,11 @@ if(isset($_POST["Submit"])){
 	$State =$_POST["State"];
 	$Pincode =$_POST["Pincode"];
 
-$Connection=mysql_connect('localhost','root','');
-$Selected= mysql_select_db('dbms',$Connection);
+	$Connection=mysqli_connect('localhost','root','','dbms');
 
 $Query= "INSERT INTO student(rollno, student_name, father_name, age, dob, branch, primary_mobile_no, secondary_mobile_no, sex, year, blood_group, home_address, city, state, pincode) VALUES('$Roll_Number','$Student_Name','$Father_Name','$Age','$DOB','$Branch','$Primary_Mobile_Number','$Secondary_Mobile_Number','$Sex','$Year','$Blood_Group','$Home_Address','$City','$State','$Pincode')" ;
 
-$Execute=mysql_query($Query);
+$Execute=mysqli_query($Connection,$Query);
 
 if($Execute){
 	echo "<h2>Record saved </h2>";
