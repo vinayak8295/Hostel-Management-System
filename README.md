@@ -2,4 +2,4 @@
 Database Management System Project in PHP,MYSQL using XAAMP server 
 
 # Live on
-https://github.com/vinayak8295/Hostel-Management-System
+http://vinayak-hostel.epizy.com/?i=1
